@@ -87,6 +87,9 @@ def pg_get_configuration():
 	# Get the IP addresses for slaves.
 	value = os.getenv('PG_SLAVES', '0.0.0.0/0').split(',')
 	configuration.update({ 'slaves': value })
+	# Get the slave heartbeat interval.
+	value = os.getenv('HEARTBEAT_INTERVAL', 5)
+	configuration.update({ 'hearbeat_interval': value })
 	# Get the slave heartbeat flag.
 	value = os.getenv('HEARTBEAT_ENABLED', 'True')
 	configuration.update({ 'heartbeat_enabled': value == 'True' })
